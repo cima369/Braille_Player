@@ -24,3 +24,8 @@ You would then navigate to the libraries using the path below:
 
 From there, you would add all libaries in the lib file as apart of the external jars, and your program should now be error free!
 
+
+*DISCLAIMER* ONCE YOU ADD THOSE LIBRARIES TO YOUR PROJECT, PLEASE DO NOT COMMIT/PUSH THE ./classpath FILE ANYMORE.
+IF YOU DO SO, THEN YOU WOULD MESS UP THE ENTIRE PROJECT, AS THE ./classpath FILE CONTAINS PATH DIRECTORIES OF YOUR LOCAL
+MACHINE TO THE EXTERNAL LIBRARY AND NO OTHER PERSON WILL BE ABLE TO DOWNLOAD/PULL THE PROJECT SINCE IT WILL ONLY WORK FOR
+THE PERSON WHO PUSHED THE ./classpath FILE.
