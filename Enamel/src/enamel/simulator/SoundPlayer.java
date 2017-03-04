@@ -24,6 +24,7 @@ public class SoundPlayer
 	private boolean repeat;
 	private ArrayList<String> repeatedText;
 	private boolean userInput;
+	private String VoiceGender = "mbrola_us1";
 
 	
 	
@@ -32,10 +33,11 @@ public class SoundPlayer
 	
 	public SoundPlayer() 
 	{
+		String HomeDir = System.getProperty("user.home");
+		System.setProperty("mbrola.base", HomeDir + "/git/PlayerActual/Enamel");
 		vm = VoiceManager.getInstance(); 
-		
 		// Will have to change to allow multiple options of voices
-		voice = vm.getVoice("kevin16");
+		voice = vm.getVoice(VoiceGender);
 		repeatedText = new ArrayList<String> ();
 		userInput = false;
 		voice.allocate(); 
@@ -380,7 +382,6 @@ public class SoundPlayer
 			throw new NumberFormatException ("Error! Please enter a number for the cells and/or buttons!");
 		}
 	}
-	
 	
 	public void startFile (String fileName) throws IllegalArgumentException
 	{
