@@ -3,7 +3,7 @@ package enamel.player;
 import enamel.simulator.SoundPlayer;
 
 /**
- * This class is included as an example of how to use the classes in the simulator package.
+ * This class is included as an example of how to use the class in the simulator package.
  * 
  */
 

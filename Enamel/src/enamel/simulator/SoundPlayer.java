@@ -33,6 +33,7 @@ public class SoundPlayer
 	public SoundPlayer() 
 	{
 		vm = VoiceManager.getInstance(); 
+		
 		// Will have to change to allow multiple options of voices
 		voice = vm.getVoice("kevin16");
 		repeatedText = new ArrayList<String> ();
@@ -428,34 +429,4 @@ public class SoundPlayer
 		
 	}
 	
-	
-/*	public static void main (String [] args)
-	{
-		SoundPlayer soundName = new SoundPlayer ();
-//		VoiceManager vm = VoiceManager.getInstance(); 
-//		Voice voice = vm.getVoice("kevin16");
-//		voice.allocate(); 
-		try
-		{
-			Scanner fileScan = new Scanner (new File(System.getProperty("user.dir") + "\\" + "Play.txt"));
-			String temp;
-			while (fileScan.hasNextLine ())
-			{
-				temp = fileScan.nextLine();
-				if (temp.length () >= 6 && temp.substring(0, 6).equals("/~Mus:"))
-				{
-					soundName.playSound (temp.substring(6));
-				}
-				else
-				{
-					voice.speak(temp);
-				}
-			}
-			fileScan.close ();
-		}
-		catch (Exception e)
-		{
-
-		}
-	} */
 }
