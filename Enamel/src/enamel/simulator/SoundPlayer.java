@@ -33,14 +33,12 @@ public class SoundPlayer
 	
 	public SoundPlayer() 
 	{
-		String HomeDir = System.getProperty("user.home");
-		System.setProperty("mbrola.base", HomeDir + "/git/PlayerActual/Enamel");
+		String currDir = System.getProperty("user.dir");
+		System.setProperty("mbrola.base", currDir);
 		vm = VoiceManager.getInstance(); 
-		// Will have to change to allow multiple options of voices
-		voice = vm.getVoice(VoiceGender);
+		changeVoice (1);
 		repeatedText = new ArrayList<String> ();
 		userInput = false;
-		voice.allocate(); 
 	}
 	
 	private void exit ()
@@ -116,6 +114,19 @@ public class SoundPlayer
 			{
 				pause (fileLine.substring(8));
 				
+			}
+			else if (fileLine.length () >= 12 && fileLine.substring(0, 12).equals("/~set-voice:"))
+			{
+				try
+				{
+					int voiceNum = Integer.parseInt(fileLine.substring(12));
+					changeVoice (voiceNum);
+				}
+				catch (NumberFormatException e)
+				{
+					throw new NumberFormatException ("Error! Wrong arguement for setting the voice. Please enter"
+							+ "1, 2, 3 or 4."); 
+				}
 			}
 			else if (fileLine.length () >= 16 && fileLine.substring(0, 16).equals("/~repeat-button:"))
 			{
@@ -264,6 +275,36 @@ public class SoundPlayer
 				}
 
 		});
+	}
+	
+	
+	private void changeVoice (int voiceNum) throws IllegalArgumentException
+	{
+		// Will have to change to allow multiple options of voices
+		//voice = vm.getVoice(VoiceGender);
+		if (voiceNum == 1)
+		{
+			voice = vm.getVoice ("kevin16");
+		}
+		else if (voiceNum == 2)
+		{
+			voice = vm.getVoice("mbrola_us1");
+		}
+		else if (voiceNum == 3)
+		{
+			voice = vm.getVoice("mbrola_us2");
+		}
+		else if (voiceNum == 4)
+		{
+			voice = vm.getVoice("mbrola_us3");
+		}
+		else 
+		{
+			throw new IllegalArgumentException ("Error! The available voice options correspond to 1, 2, 3 or 4!");
+
+		}
+		voice.allocate(); 
+
 	}
 	
 	private void dispCellPins (String paramArgs)

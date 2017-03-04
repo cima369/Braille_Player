@@ -4,6 +4,7 @@ The Adventures of the High Seas.
 
 /~pause:3
 /~disp-string:poo
+/~set-voice:1
 What is the answer to braille one?
 The choices are A, B
 /~skip-button:0 ONEE
@@ -26,7 +27,7 @@ Incorrect, the correct answer was A
 
 /~disp-clearAll
 /~disp-string:yes
-
+/~set-voice:2
 /~repeat
 Moving on to the next question. What is the answer to braille two?
 The choices are Yes, No
