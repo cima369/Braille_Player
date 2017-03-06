@@ -4,7 +4,7 @@ The Adventures of the High Seas.
 
 /~pause:3
 /~disp-string:poo
-/~set-voice:1
+/~set-voice:3
 What is the answer to braille one?
 The choices are A, B
 /~skip-button:0 ONEE

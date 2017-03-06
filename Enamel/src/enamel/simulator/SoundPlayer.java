@@ -9,6 +9,7 @@ import java.util.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JButton;
+import java.util.logging.*;
 
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
@@ -85,8 +86,8 @@ public class SoundPlayer
 		}
 	}
 	
-	
-	private void performAction (String fileLine)
+
+	void performAction (String fileLine)
 	{		
 		if (repeat)
 		{
@@ -355,7 +356,7 @@ public class SoundPlayer
 			
 		}
 	}
-	public void play () throws IllegalStateException
+	private void play () throws IllegalStateException
 	{
 		String fileLine;
 		try
@@ -379,6 +380,39 @@ public class SoundPlayer
 		{
 			
 		}
+	}
+	
+	private void errorLog (String exception, String message)
+	{
+		Logger logger = Logger.getLogger("ERROR_LOG");  
+	    FileHandler fh;  
+	    
+	    speak ("Error! Something went wrong in the program! Please consult a teacher " +
+				"or administrator for assistance! Also please view the ERROR_LOG file for more details");
+	    try 
+	    {  
+	    	File f = new File("ERROR_LOG.txt");
+	        fh = new FileHandler(f.toString());  
+
+	        logger.addHandler(fh);
+	        logger.setUseParentHandlers(false);
+	        SimpleFormatter formatter = new SimpleFormatter();  
+	        fh.setFormatter(formatter);  
+		    
+	        logger.warning(exception);  
+	        logger.info(message);
+		    fh.close ();
+
+	    } 
+	    catch (SecurityException e) 
+	    {  
+	        e.printStackTrace();  
+	    } 
+	    catch (IOException e) 
+	    {  
+	        e.printStackTrace();  
+	    }  
+	    System.exit(0);
 	}
 	
 	private void playSound (String sound)
@@ -410,7 +444,7 @@ public class SoundPlayer
 		}
 	}
 	
-	private void setCellAndButton () throws NumberFormatException
+	private void setCellAndButton () 
 	{
 		try
 		{
@@ -420,11 +454,13 @@ public class SoundPlayer
 		}
 		catch (NumberFormatException e)
 		{
-			throw new NumberFormatException ("Error! Please enter a number for the cells and/or buttons!");
+			
+			errorLog ("Exception error: NumberFormatException", "Expected format: Cell num1 \n Button num2 \n " +
+			"where num1 and num2 are positive integers.");
 		}
 	}
 	
-	public void startFile (String fileName) throws IllegalArgumentException
+	public void startFile (String fileName)
 	{
 		if (fileScanner == null)
 		{
@@ -436,14 +472,16 @@ public class SoundPlayer
 			}
 			catch (Exception e)
 			{
-				speak ("Error! File name is not correct! Please consult a teacher " +
-						"or administrator for assistance!");
-						throw new IllegalArgumentException ("Error! File name is not correct!");
+
+				errorLog ("Exception error: " + e.toString(), "Expected an actual .txt file that "
+						+ "exists in the project folder. \n Could not find file: " + fileName + " \n Perhaps"
+						+ " you forgot to add the file extension or include it into the project?");
 			}
 		}
 		else
 		{
-			throw new IllegalArgumentException ("Error! A scenario file already exists!");
+			// throw new IllegalArgumentException ("Error! A scenario file already exists!");
+			errorLog ("Exception error: IllegalArgumentException", "A scenario file already exists and has been called!");
 		}
 	}
 	
