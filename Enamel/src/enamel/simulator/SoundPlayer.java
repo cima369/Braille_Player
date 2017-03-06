@@ -21,12 +21,10 @@ public class SoundPlayer
 	private static Scanner fileScanner = null;
 	private int cellNum;
 	private int buttonNum;
-	private Simulator sim;
+	public Simulator sim;
 	private boolean repeat;
 	private ArrayList<String> repeatedText;
 	private boolean userInput;
-	private String VoiceGender = "mbrola_us1";
-
 	
 	
 	//TODO: ALLOW MULTIPLE VOICES TO BE PLAYED
