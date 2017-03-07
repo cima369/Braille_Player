@@ -1,0 +1,14 @@
+Cell 2
+Button 4
+/~disp-string:jk
+Fifth Scenario What is the alphabet in braille two the choices are j k
+/~skip-button:0 ONEE
+/~skip-button:1 TWOO
+/~user-input
+/~ONEE
+/~sound:wrong.wav
+Incorrect the answer was k This is a bad scenario
+/~skip:NEXTT
+/~TWOO
+/~sound:correct.wav
+Correct This is a bad scenario

@@ -1,6 +1,6 @@
 Cell 5
 Button 3
-The Adventures of the High Seas.
+The Adventures of the High Seas
 
 /~pause:3
 /~disp-string:poo
