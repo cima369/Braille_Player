@@ -13,6 +13,9 @@ public class ToyPlayer {
 
 		SoundPlayer player = new SoundPlayer ();
 		player.startFile("Scenario_One.txt");
+		// Example format of how to use the startDir method instead:
+		// player.startDir("C:\\Users\\Eric\\workspace\\PlayerActual\\Enamel\\Scenario_One.txt");
+ 
 	}
 
 }
