@@ -31,6 +31,7 @@ Incorrect, the correct answer was A
 /~repeat
 Moving on to the next question. What is the answer to braille two?
 The choices are S, E
+Press button two to repeat the question
 /~endrepeat
 
 /~reset-buttons
