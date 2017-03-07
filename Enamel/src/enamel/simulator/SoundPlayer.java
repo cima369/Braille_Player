@@ -549,7 +549,7 @@ public class SoundPlayer
 		}
 		catch (Exception e)
 		{
-			errorLog (e.toString (), "Strange error occurred if you are able to read this message. Possibilities "
+			errorLog ("Exception error : " + e.toString (), "Strange error occurred if you are able to read this message. Possibilities "
 					+ "could include possible file corruption, or that you have enter characters that "
 					+ "could not be read/interpreted.");
 		}
@@ -615,7 +615,7 @@ public class SoundPlayer
 	    }
 	    catch (Exception e)
 	    {
-	        errorLog (e.toString(), "Expected the name of the file (including extension) but instead got: " +
+	        errorLog ("Exception error: " + e.toString(), "Expected the name of the file (including extension) but instead got: " +
 	      sound + "\n Perhaps you forgot to include the extension of the sound file with the name? Other "
 	      		+ "possibilities include: \n Incorrect name of the file, the file not being in the same location"
 	      		+ "as the project folder, or an attempt to play an unsupported sound file. (.wav file formats"
@@ -649,7 +649,7 @@ public class SoundPlayer
 		catch (Exception e)
 		{
 			
-			errorLog (e.toString (), "Expected format: Cell num1 \n Button num2 \n " +
+			errorLog ("Exception error: " + e.toString (), "Expected format: Cell num1 \n Button num2 \n " +
 			"as the first two lines of the scenarion file, and where num1 and num2 are positive integers. \n"
 			+ "Did not receive such a format in the scenario file and program had to end due to the incorrect"
 			+ "file format.");
