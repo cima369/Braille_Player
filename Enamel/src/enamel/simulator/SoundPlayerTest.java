@@ -7,7 +7,7 @@ import org.junit.Test;
 public class SoundPlayerTest {
 
 	@Test
-	public void testRaisePin() {
+	public void testCellRaise() {
 		// Raise pin
 		SoundPlayer test1 = new SoundPlayer();
 		test1.sim = new Simulator(4, 3);
@@ -24,7 +24,7 @@ public class SoundPlayerTest {
 		assertFalse(test1.sim.getCell(1).radio3x1.isSelected());
 	}
 
-	public void testLowerPin() {
+	public void testdispCellLower() {
 		// lower pins
 		SoundPlayer test2 = new SoundPlayer();
 		test2.sim = new Simulator(6, 3);
@@ -45,11 +45,10 @@ public class SoundPlayerTest {
 
 		// if not its lowered then its still raised
 		test2.performAction("/~disp-cell-raise:4 7");
-		;
 		assertTrue(test2.sim.getCell(4).radio4x1.isSelected());
 	}
 
-	public void testdisplaycellPin() {
+	public void testdispCellPin() {
 		// disp cell pins
 		SoundPlayer test3 = new SoundPlayer();
 		test3.sim = new Simulator(5, 4);
@@ -67,7 +66,7 @@ public class SoundPlayerTest {
 
 	}
 
-	public void testClearall() {
+	public void testdispClearall() {
 		// Clear all
 		SoundPlayer test4 = new SoundPlayer();
 		test4.sim = new Simulator(4, 4);
@@ -85,7 +84,7 @@ public class SoundPlayerTest {
 		assertTrue(test4.sim.getCell(1).radio2x1.isSelected());
 	}
 
-	public void testCellClear() {
+	public void testdispCellClear() {
 		// Cell clear
 		SoundPlayer test5 = new SoundPlayer();
 		test5.sim = new Simulator(6, 4);
@@ -105,7 +104,7 @@ public class SoundPlayerTest {
 		assertFalse(test5.sim.getCell(1).radio2x2.isSelected());
 	}
 
-	public void testDisplayStringPin() {
+	public void testdispCellString() {
 		// String
 		SoundPlayer test6 = new SoundPlayer();
 		test6.sim = new Simulator(5, 4);
@@ -124,7 +123,7 @@ public class SoundPlayerTest {
 
 	}
 
-	public void testDisplayCellChar() {
+	public void testdispCellChar() {
 		// Char
 		SoundPlayer test7 = new SoundPlayer();
 		test7.sim = new Simulator(6, 2);
@@ -145,64 +144,20 @@ public class SoundPlayerTest {
 		test7.performAction("/~pause: 1");
 		assertFalse(test7.sim.getCell(4).radio1x1.isSelected());
 
-		/*
-		 * 
-		 * SoundPlayer test8 = new SoundPlayer (); test8.sim = new Simulator (2,
-		 * 4); test7.performAction("/~disp-cell-char:0 A"); assertTrue
-		 * (test7.sim.getCell(1).radio2x2.isSelected());
-		 */
 	}
-
-	public void testRepeat() {
-
-		SoundPlayer test9 = new SoundPlayer();
-		test9.sim = new Simulator(5, 1);
-		test9.performAction("/~disp-string: hew");
-		test9.performAction("/~repeat");
-		test9.performAction("press button to continue?");
-		assertFalse(test9.sim.getButton(0).isSelected());
-		test9.performAction("/~endrepeat");
-
-		test9.performAction("/~disp-string:yes");
-		test9.performAction("/~set-voice:2");
-		test9.performAction("/~repeat");
-		test9.performAction("Moving on to the next question. What is the answer to braille two?");
-		test9.performAction("The choices are Yes, No");
-		assertFalse(test9.sim.getButton(0).isSelected());
-		test9.performAction("/~endrepeat");
+	public void testsetCellandButton() {
+		
+		SoundPlayer test8 = new SoundPlayer();
+		test8.sim = new Simulator(4, 4);
+		
+		assertTrue(test8.sim.getButton(0).isEnabled());
+		assertTrue(test8.sim.getButton(0).isDisplayable());
+		assertTrue(test8.sim.getCell(0).radio1x1.isDisplayable());
+		
+		assertTrue(test8.sim.getButton(3).isEnabled());
+		assertTrue(test8.sim.getButton(3).isDisplayable());
+		assertTrue(test8.sim.getCell(2).radio2x1.isDisplayable());
+		
+		//cases where assertion is false cannot be made because of the exceptions
 	}
-
-	public void testPause() {
-		// main test is for pause but also added sound into it too
-		SoundPlayer test10 = new SoundPlayer();
-		test10.sim = new Simulator(5, 3);
-		test10.performAction("after a pause for three seconds please a sound will play.");
-		test10.performAction("/~pause:3");
-		test10.performAction("/~sound:correct.wav");
-
-	}
-
-	public void testResetbutton()
-
-	{
-		// test for reset button
-		SoundPlayer test11 = new SoundPlayer();
-		test11.sim = new Simulator(5, 6);
-		test11.performAction("/~skip-button:0 HI");
-		test11.performAction("/~skip-button:1 HELLO");
-		test11.performAction("/~reset-buttons");
-		test11.performAction("/~skip-button:0 HELLO");
-		test11.performAction("/~skip-button:1 HI");
-		// its fails since its reset
-		assertFalse(test11.sim.getButton(0).isDefaultButton());
-		assertFalse(test11.sim.getButton(1).isDefaultButton());
-
-		// test to see if it passes if its not reset. not working yet
-		SoundPlayer test12 = new SoundPlayer();
-		test12.sim = new Simulator(5, 6);
-		assertTrue(test12.sim.getButton(0).isDefaultButton());
-		assertTrue(test12.sim.getButton(1).isDefaultButton());
-
-	}
-
 }
