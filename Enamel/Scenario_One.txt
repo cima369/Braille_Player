@@ -3,7 +3,7 @@ Button 3
 The Adventures of the High Seas
 
 /~pause:3
-/~disp-string:poo
+/~disp-string:aoo
 /~set-voice:3
 What is the answer to braille one?
 The choices are A, B
@@ -30,7 +30,7 @@ Incorrect, the correct answer was A
 /~set-voice:2
 /~repeat
 Moving on to the next question. What is the answer to braille two?
-The choices are Yes, No
+The choices are S, E
 /~endrepeat
 
 /~reset-buttons
@@ -41,7 +41,7 @@ The choices are Yes, No
 
 /~ONEE
 /~sound:wrong.wav
-Incorrect, the correct answer was No
+Incorrect, the correct answer was E
 /~skip:NEXTT
 
 /~TWOO
@@ -54,7 +54,7 @@ Correct
 /~disp-clearAll
 /~disp-cell-pins:2 10101010
 /~disp-cell-char:0 A
-/~disp-cell-char:1 j
+/~disp-cell-char:1 T
 /~reset-buttons
 
 Time for the last question. Which of the braille cell represents T?
