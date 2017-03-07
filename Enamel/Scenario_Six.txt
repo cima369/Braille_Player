@@ -1,0 +1,10 @@
+Cell 1
+Button 3
+/~disp-string:qw
+The string will not display
+/~pause:
+d
+d
+d
+d
+d

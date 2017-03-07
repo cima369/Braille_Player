@@ -1,0 +1,11 @@
+Cell 7
+button 2
+Hello Hello
+/~pause:3
+
+/~set-voice:5
+This is Kevin's question. What is the answer?
+/~skip-button:1 ONEE
+
+/~ONEE
+The end
